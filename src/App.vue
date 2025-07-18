@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" @contentmenu.prevent @dragstart.prevent>
     <PasswordAnalyzer />
   </div>
 </template>

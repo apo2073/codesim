@@ -23,6 +23,7 @@
             type="text"
             placeholder="Salt"
             class="salt-input"
+            disabled="true"
           />
         </div>
         
