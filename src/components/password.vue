@@ -15,6 +15,7 @@
             v-model="password"
             type="password"
             placeholder="비밀번호를 입력하세요"
+            maxlength="16"
             class="password-input"
             :class="securityClass"
           />
