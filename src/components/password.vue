@@ -19,13 +19,10 @@
             class="password-input"
             :class="securityClass"
           />
-          <input 
-            v-model="salt"
-            type="text"
-            placeholder="Salt"
-            class="salt-input"
-            disabled="true"
-          />
+          <select v-model="salt" class="salt-input">
+            <option value="">Salt를 선택하세요</option>
+            <option v-for="s in salts" :key="s" :value="s">{{ s }}</option>
+          </select>
         </div>
         
         <h3 class="hash-display">
@@ -40,21 +37,9 @@
         </div>
         
         <div class="info-section">
-          <button @click="showModal = true" class="info-button">
-            비밀번호 조합별 보안 등급 보기
+          <button @click="openSurvey" class="info-button">
+            설문 참여하기
           </button>
-        </div>
-      </div>
-      
-      <div v-if="showModal" class="modal-overlay" @click="closeModal">
-        <div class="modal-content" @click.stop>
-          <div class="modal-header">
-            <h2>자료</h2>
-            <button @click="closeModal" class="close-button">×</button>
-          </div>
-          <div class="modal-body">
-            <p>테스트용 모달</p>
-          </div>
         </div>
       </div>
     </div>
@@ -62,7 +47,6 @@
   
   <script>
   import { passwordUtils } from '../utils/passwordUtils.js'
-//   import '../styles/PasswordAnalyzer.css'
   
   export default {
     name: 'PasswordAnalyzer',
@@ -70,7 +54,7 @@
       return {
         password: '',
         salt: '',
-        showModal: false
+        salts: ['Naver', 'Salt', 'qwerty', 'ABC']
       }
     },
     computed: {
@@ -141,10 +125,9 @@
       }
     },
     methods: {
-      closeModal() {
-        this.showModal = false
+      openSurvey() {
+        window.open('http://example.com', '_blank');
       }
     }
   }
   </script>
-  
