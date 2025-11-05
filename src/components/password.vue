@@ -128,7 +128,7 @@
     methods: {
       openSurvey() {
         this.surveyTaken = true;
-        window.open('http://example.com', '_blank');
+        window.open('https://forms.gle/pUfjQxNv8YTvNxt26', '_blank');
       },
       beforeWindowUnload(e) {
         if (!this.surveyTaken) {
