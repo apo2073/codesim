@@ -54,7 +54,8 @@
       return {
         password: '',
         salt: '',
-        salts: ['Naver', 'Salt', 'qwerty', 'ABC']
+        salts: ['salt', '12345', 'qwerty', 'SALT'],
+        surveyTaken: false
       }
     },
     computed: {
@@ -126,8 +127,21 @@
     },
     methods: {
       openSurvey() {
+        this.surveyTaken = true;
         window.open('http://example.com', '_blank');
+      },
+      beforeWindowUnload(e) {
+        if (!this.surveyTaken) {
+          e.preventDefault();
+          e.returnValue = '';
+        }
       }
+    },
+    mounted() {
+      window.addEventListener('beforeunload', this.beforeWindowUnload);
+    },
+    beforeDestroy() {
+      window.removeEventListener('beforeunload', this.beforeWindowUnload);
     }
   }
   </script>
